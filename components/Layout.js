@@ -1,7 +1,9 @@
-export default ({ children }) => {
+const Layout = ({ children }) => {
   return (
-    <div className="antialiased text-gray-900 flex items-center justify-center min-h-screen">
-      { children }
+    <div className='font-sans text-gray-900 flex items-center justify-center'>
+      {children}
     </div>
   )
 }
+
+export default Layout
