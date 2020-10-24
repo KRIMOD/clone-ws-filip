@@ -23,7 +23,7 @@ const About = () => (
 )
 
 const Overview = () => (
-  <div className='flex px-3 flex-col justify-center items-center text-center sm:flex-row sm:justify-between sm:items-baseline sm:text-justify'>
+  <div className='flex px-3 flex-col justify-center items-center text-center sm:flex-row sm:justify-between sm:items-baseline sm:text-justify lg:px-16'>
     <Projects />
     <Thoughts />
     <Stuff />
