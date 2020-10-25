@@ -1,3 +1,6 @@
+Landing page clone of [Filip Borkiewicz](https://0x46.net/) website
+
+
 # Next.js
 
 To add Tailwind to a Next (^9.2.0) project, start by installing `tailwindcss`, `postcss-import` and `autoprefixer`:
