@@ -16,11 +16,11 @@ export default Index
 const About = () => (
   <div className='flex flex-col items-center justify-center py-32'>
     <h1 className='text-4xl font-light px-6 text-center pt-4'>Hi! I'm <span className='text-deepLilac font-semibold'>Krimo Temam</span>, a software developer living in Algeria</h1>
-    <p className='text-gray-600 text-opacity-50 pt-6 text-sm'>Ed is the standard text editor.</p>
+    <p className='text-gray-600 text-opacity-50 pt-6 text-sm'>Ca va chwiya ?</p>
     <div className='flex text-gray-500 pt-3'>
-      <a href='#' className='p-2 transition duration-200 ease-in-out hover:text-white hover:bg-deepLilac border-0 rounded-sm'><Twitter className='h-5 w-5 ' /></a>
-      <a href='#' className='ml-2 p-2 transition duration-200 ease-in-out hover:text-white hover:bg-deepLilac border-0 rounded-sm'><GitHub className='h-5 w-5  ' /></a>
-      <a href='#' className='ml-2 p-2 transition duration-200 ease-in-out hover:text-white hover:bg-deepLilac border-0 rounded-sm'><Linkedin className='h-5 w-5' /></a>
+      <a href='https://twitter.com/KrimoTemam' className='p-2 transition duration-200 ease-in-out hover:text-white hover:bg-deepLilac border-0 rounded-sm'><Twitter className='h-5 w-5 ' /></a>
+      <a href='http://github.com/krimod' className='ml-2 p-2 transition duration-200 ease-in-out hover:text-white hover:bg-deepLilac border-0 rounded-sm'><GitHub className='h-5 w-5  ' /></a>
+      <a href='https://www.linkedin.com/in/mamar-abdelkrim-temam/' className='ml-2 p-2 transition duration-200 ease-in-out hover:text-white hover:bg-deepLilac border-0 rounded-sm'><Linkedin className='h-5 w-5' /></a>
     </div>
   </div>
 )
