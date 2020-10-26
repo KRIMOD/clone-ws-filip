@@ -4,8 +4,9 @@ import faker, { lorem } from 'faker'
 faker.seed(123)
 
 const articleType = ['project', 'thought', 'stuff']
+// const createMirageServer = () => {
 const server = createServer({
-  // timing: 1000,
+  timing: 1000,
   models: {
     article: Model
   },
@@ -28,9 +29,13 @@ const server = createServer({
   },
 
   routes () {
+    this.passthrough((request) => {
+      if (request.url === '/_next/static/development/_devPagesManifest.json') {
+        return true
+      }
+    })
     this.namespace = 'api'
     this.get('articles')
-
     this.passthrough()
   },
 
@@ -38,3 +43,6 @@ const server = createServer({
     server.createList('article', 15)
   }
 })
+// }
+
+// export default createMirageServer
