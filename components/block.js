@@ -1,26 +1,30 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
-export function Block ({ blockTitle, articles, link, className }) {
-  const router = useRouter()
+export function Block ({ articles, className }) {
   return (
-    <div className={` ${className}`}>
-      {
-        (router.pathname === '/thoughts' || router.pathname === '/projects')
-          ? (<p />)
-          : (<h1><Link href={link}><a className='text-gray-600 text-xs tracking-wider'>{blockTitle.toUpperCase()}</a></Link></h1>)
-      }
+    <div className={`${className}`}>
       {articles?.map(({ title, description }, index) =>
         <Blog title={title} description={description} key={index} />
       )}
-      <h1 className='text-xs tracking-widest text-purple-600 text-opacity-75 pt-5 font-medium'>MORE</h1>
     </div>
   )
 }
 
-const Blog = ({ title, description }) => (
-  <div className='pt-3 text-black'>
-    <h2 className='text-lg font-medium'><a href='#' className='border-b border-dotted border-black'>{title}</a></h2>
-    <p className='text-sm font-normal'>{description}</p>
-  </div>
-)
+export function Blog ({ title, description }) {
+  return (
+    <div className='pt-3 text-black'>
+      <h2 className='text-lg font-medium'><Link href={`/thoughts/${title}`}><a className='border-b border-dotted border-black'>{title}</a></Link></h2>
+      <p className='text-sm font-normal'>{description}</p>
+    </div>
+  )
+}
+
+export function BlockPreview ({ blockTitle, articles, link, className }) {
+  return (
+    <div className={` ${className}`}>
+      <h1 className='text-gray-600 text-xs tracking-wider'>{blockTitle.toUpperCase()}</h1>
+      <Block articles={articles} className='pb-4' />
+      <Link href={link}><a className='text-xs tracking-widest text-purple-600 text-opacity-75 font-medium'>MORE</a></Link>
+    </div>
+  )
+}

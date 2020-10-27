@@ -1,5 +1,5 @@
 import { Twitter, GitHub, Linkedin } from '../components/logos'
-import { Block } from '../components/block'
+import { BlockPreview } from '../components/block'
 import useSWR from 'swr'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
@@ -17,8 +17,8 @@ const Index = () => (
 export default Index
 
 const About = () => (
-  <div className='flex flex-col items-center justify-center py-32'>
-    <h1 className='text-4xl font-light px-6 text-center pt-4'>Hi! I'm <span className='text-deepLilac font-semibold'>Krimo Temam</span>, a software developer living in Algeria</h1>
+  <div className='flex flex-col items-center justify-center py-32 max-w-screen-md'>
+    <h1 className='text-4xl font-light text-center pt-4'>Hi! I'm <span className='text-deepLilac font-semibold'>Krimo Temam</span>, a software developer living in Algeria</h1>
     <p className='text-gray-600 text-opacity-50 pt-8 text-sm'>Ca va chwiya ?</p>
     <div className='flex text-gray-500 pt-2'>
       <a href='https://twitter.com/KrimoTemam' className='p-2 transition duration-200 ease-in-out hover:text-white hover:bg-deepLilac border-0 rounded-sm'><Twitter className='h-5 w-5 ' /></a>
@@ -31,10 +31,10 @@ const About = () => (
 const Overview = () => {
   const { data } = useSWR('/api/articles', fetcher)
   return (
-    <div className='flex  flex-col justify-center items-center text-center sm:flex-row sm:justify-between sm:items-baseline sm:text-justify md:px-12 sm:px-2'>
-      <Block className='w-1/3 pt-12 pr-4' blockTitle='projects' link='projects' articles={data?.articles.filter(({ type }) => type === 'project')} />
-      <Block className='w-1/3 pt-12 pr-4' blockTitle='thoughts' link='thoughts' articles={data?.articles.filter(({ type }) => type === 'thought')} />
-      <Block className='w-1/3 pt-12 pr-4' blockTitle='stuff' link='#' articles={data?.articles.filter(({ type }) => type === 'stuff')} />
+    <div className='flex  flex-col justify-center items-center text-center sm:flex-row sm:justify-between sm:items-baseline sm:text-justify sm:px-4'>
+      <BlockPreview className='w-1/3 pt-12 pr-4' blockTitle='projects' link='projects' articles={data?.articles.filter(({ type }) => type === 'project')} />
+      <BlockPreview className='w-1/3 pt-12 pr-4' blockTitle='thoughts' link='thoughts' articles={data?.articles.filter(({ type }) => type === 'thought')} />
+      <BlockPreview className='w-1/3 pt-12 pr-4' blockTitle='stuff' link='#' articles={data?.articles.filter(({ type }) => type === 'stuff')} />
     </div>
   )
 }

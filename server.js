@@ -36,6 +36,9 @@ const server = createServer({
     })
     this.namespace = 'api'
     this.get('articles')
+    this.get('articles/:title', (schema, request) => {
+      return schema.articles.findBy({ title: request.params.title })
+    })
     this.passthrough()
   },
 
