@@ -1,21 +1,22 @@
-import { Block } from '../components/block'
-import useSWR from 'swr'
-import Link from 'next/link'
+import { Blog } from '../components/block'
+import { getAllThoughts } from '../lib/thoughts'
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
-
-const Index = () => {
-  const { data } = useSWR('/api/articles', fetcher)
-
+export default function Thoughts ({ allPosts }) {
   return (
     <div className='w-full  max-w-screen-lg pt-3 pl-5'>
-      <ul className='flex text-xs text-black '>
-        <li><Link href='/'>home</Link></li>
-        <li className='pl-2'>&gt;&nbsp; <Link href='/thoughts'>thoughts</Link></li>
-      </ul>
-      <Block className='pt-4' articles={data?.articles?.filter(({ type }) => type === 'thought')} />
+      {
+        allPosts?.map((article, index) => (
+          <Blog article={article} type='thoughts' key={index} />
+        ))
+      }
     </div>
   )
 }
 
-export default Index
+export async function getStaticProps () {
+  const allPosts = getAllThoughts(['title', 'date', 'slug'])
+
+  return {
+    props: { allPosts }
+  }
+}

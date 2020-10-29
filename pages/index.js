@@ -1,20 +1,18 @@
 import { Twitter, GitHub, Linkedin } from '../components/logos'
 import { BlockPreview } from '../components/block'
-import useSWR from 'swr'
+import { getAllProjects } from '../lib/projects'
+import { getAllThoughts } from '../lib/thoughts'
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
-
-const Index = () => (
-  // <div className='max-w-screen-lg m-auto lg:px-10 sm:px-2'>
-  <div>
-    {/* <Link href='/thoughts'><a>thoughts</a></Link> */}
-    <About />
-    <Overview />
-    <Footer />
-  </div>
-)
-
-export default Index
+export default function Index ({ allProjects, allThoughts }) {
+  return (
+    // <div className='max-w-screen-lg m-auto lg:px-10 sm:px-2'>
+    <div>
+      <About />
+      <Overview thoughts={allThoughts} projects={allProjects} />
+      <Footer />
+    </div>
+  )
+}
 
 const About = () => (
   <div className='flex flex-col items-center justify-center py-32 max-w-screen-md'>
@@ -28,13 +26,12 @@ const About = () => (
   </div>
 )
 
-const Overview = () => {
-  const { data } = useSWR('/api/articles', fetcher)
+const Overview = ({ thoughts, projects }) => {
   return (
     <div className='flex  flex-col justify-center items-center text-center sm:flex-row sm:justify-between sm:items-baseline sm:text-justify sm:px-4'>
-      <BlockPreview className='w-1/3 pt-12 pr-4' blockTitle='projects' link='projects' articles={data?.articles.filter(({ type }) => type === 'project')} />
-      <BlockPreview className='w-1/3 pt-12 pr-4' blockTitle='thoughts' link='thoughts' articles={data?.articles.filter(({ type }) => type === 'thought')} />
-      <BlockPreview className='w-1/3 pt-12 pr-4' blockTitle='stuff' link='#' articles={data?.articles.filter(({ type }) => type === 'stuff')} />
+      <BlockPreview className='w-1/3 pt-12 pr-4' blockTitle='projects' link='projects' articles={projects} />
+      <BlockPreview className='w-1/3 pt-12 pr-4' blockTitle='thoughts' link='thoughts' articles={thoughts} />
+      <BlockPreview className='w-1/3 pt-12 pr-4' blockTitle='stuff' link='#' articles={null} />
     </div>
   )
 }
@@ -47,3 +44,12 @@ const Footer = () => (
     </ul>
   </div>
 )
+
+export async function getStaticProps () {
+  const allProjects = getAllProjects(['title', 'date', 'slug', 'description'])
+  const allThoughts = getAllThoughts(['title', 'date', 'slug', 'description'])
+
+  return {
+    props: { allProjects, allThoughts }
+  }
+}

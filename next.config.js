@@ -1,10 +1,24 @@
-// if (process.env.NODE_ENV === 'development') {
-//   require('dotenv').config()
-// }
+const withMdxEnhanced = require('next-mdx-enhanced')
 
-module.exports = {
-  env: {
-    API_BASE_URL: process.env.API_BASE_URL,
-    USE_MIRAGE_SERVER: 'true'
+module.exports = withMdxEnhanced({
+  defaultLayout: true,
+  fileExtensions: ['mdx', 'md']
+})({
+  pageExtensions: ['js', 'jsx', 'mdx'],
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.(png|jpe?g|gif|mp4)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            publicPath: '/_next',
+            name: 'static/media/[name].[hash].[ext]'
+          }
+        }
+      ]
+    })
+
+    return config
   }
-}
+})
