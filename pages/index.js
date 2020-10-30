@@ -6,7 +6,7 @@ import { getAllThoughts } from '../lib/thoughts'
 export default function Index ({ allProjects, allThoughts }) {
   return (
     // <div className='max-w-screen-lg m-auto lg:px-10 sm:px-2'>
-    <div className='max-w-screen-md mx-auto'>
+    <div className=''>
       <About />
       <Overview thoughts={allThoughts} projects={allProjects} />
       <Footer />
