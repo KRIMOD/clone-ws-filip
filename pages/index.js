@@ -6,7 +6,7 @@ import { getAllThoughts } from '../lib/thoughts'
 export default function Index ({ allProjects, allThoughts }) {
   return (
     // <div className='max-w-screen-lg m-auto lg:px-10 sm:px-2'>
-    <div>
+    <div className='max-w-screen-md mx-auto'>
       <About />
       <Overview thoughts={allThoughts} projects={allProjects} />
       <Footer />
@@ -15,7 +15,7 @@ export default function Index ({ allProjects, allThoughts }) {
 }
 
 const About = () => (
-  <div className='flex flex-col items-center justify-center py-32 max-w-screen-md'>
+  <div className='flex flex-col items-center justify-center py-32 max-w-screen-lg '>
     <h1 className='text-4xl font-light text-center pt-4'>Hi! I'm <span className='text-deepLilac font-semibold'>Krimo Temam</span>, a software developer living in Algeria</h1>
     <p className='text-gray-600 text-opacity-50 pt-8 text-sm'>Ca va chwiya ?</p>
     <div className='flex text-gray-500 pt-2'>
