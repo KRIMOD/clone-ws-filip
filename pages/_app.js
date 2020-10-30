@@ -1,5 +1,5 @@
 import React from 'react'
-import '../css/tailwind.css'
+import '../style.css'
 // import '../server'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
