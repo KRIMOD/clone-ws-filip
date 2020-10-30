@@ -15,8 +15,10 @@ export default function MyApp ({ Component, pageProps }) {
 
 const Layout = ({ children }) => {
   return (
-    <div className='font-sans text-gray-900 items-center justify-center max-w-screen-md mx-auto'>
-      {children}
+    <div className='max-w-screen-md mx-auto'>
+      <div className='font-sans text-gray-900 items-center justify-center'>
+        {children}
+      </div>
     </div>
   )
 }
