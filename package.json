@@ -9,10 +9,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^3.0.0",
+    "@loadable/component": "^5.14.1",
     "@mdx-js/loader": "^1.6.19",
     "@next/mdx": "^10.0.0",
-    "autoprefixer": "^10.0.1",
     "date-fns": "^2.16.1",
     "gray-matter": "^4.0.2",
     "next": "^10.0.0",
@@ -24,9 +23,7 @@
     "tailwindcss": "^1.9.6"
   },
   "devDependencies": {
-    "faker": "^5.1.0",
     "file-loader": "^6.2.0",
-    "miragejs": "^0.1.41",
     "standard": "^16.0.0"
   }
 }
