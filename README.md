@@ -1,4 +1,17 @@
-Landing page clone of [Filip Borkiewicz](https://0x46.net/) website
+# Nextjs website clone 
+A clone of [Filip Borkiewicz](https://0x46.net/) website using nextjs.
+Added support for SSG with mdx.
+
+A preview is hosted with vercel [here](https://clone-ws-filip.vercel.app/)
+
+
+## Main tools used : 
+* next-mdx-enhanced : For layout and front matter suppport 
+* tailwindcss : For styling
+* standard : Opiniated formatter 
+
+## To add an article 
+Blog like support was build for /thoughts and /projects. To add an article, you'll have to add [slug]/index.md where slug is the name of the directory inside pages/thoughts or pages/projects. 
 
 
 # Next.js
@@ -46,32 +59,3 @@ class MyApp extends App {
 
 export default MyApp
 ```
-## Setting up Purgecss (optional)
-To add Purgecss, start by installing `@fullhuman/postcss-purgecss`. 
-
-```sh
-npm install @fullhuman/postcss-purgecss --save
-```
-
-Finally, add Purgecss to PostCSS plugins by updating the `postcss.config.js` file and adding the following configuration:
-
-```js
-const purgecss = [
-  "@fullhuman/postcss-purgecss",
-  {
-    content: ["./components/**/*.js", "./pages/**/*.js"],
-    defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
-  }
-];
-module.exports = {
-  plugins: [
-    "postcss-import",
-    "tailwindcss",
-    "autoprefixer",
-    ...(process.env.NODE_ENV === "production" ? [purgecss] : [])
-  ]
-};
-
-```
-
-[Learn more about using Purgecss with Tailwind here.](https://tailwindcss.com/docs/controlling-file-size#setting-up-purgecss)
